@@ -1,3 +1,4 @@
+#define SDL_MAIN_HANDLED
 // gcc 01open-window/main.c -o test $(pkg-config --cflags --libs sdl3)
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
@@ -6,6 +7,7 @@
 #include <stdlib.h>
 
 // #define SDL_FLAGS (SDL_INIT_VIDEO | SDL_INIT_AUDIO)
+// video subsystem; automatically initializes the events subsystems.
 #define SDL_FLAGS SDL_INIT_VIDEO
 
 #define WINDOW_TITLE "Open Window"
@@ -50,7 +52,7 @@ void game_free(struct Game *g) {
   SDL_Quit();
 }
 
-int main() {
+int main(void) {
   bool exit_status = EXIT_FAILURE;
 
   struct Game game = {0};
